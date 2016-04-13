@@ -8,16 +8,6 @@ const fs = Plugin.fs;
 const fsExtra = require('fs-extra');
 import mkdirp from 'mkdirp';
 
-const Vulcanize = require('vulcanize');
-
-const Vulcan = {
-    process: function(target, opt={}){
-        return Async.runSync((done)=>{
-            Vulcanize.setOptions(opt);
-            Vulcanize.process(target, (err, html)=>done(err, html));
-        })
-    }
-}
 
 
 class PolyteorCompiler extends CachingCompiler {
@@ -27,6 +17,13 @@ class PolyteorCompiler extends CachingCompiler {
             , defaultCacheSize: 1024 * 1024 * 10
          });
 
+    }
+    vulcanize(target, opt={}){
+        const Vulcanize = require('vulcanize');
+          return Async.runSync((done)=>{
+            Vulcanize.setOptions(opt);
+            Vulcanize.process(target, (err, html)=>done(err, html));
+        })
     }
     getCacheKey(inputFile) {
         return inputFile.getSourceHash();
