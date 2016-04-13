@@ -9,6 +9,9 @@ const fsExtra = require('fs-extra');
 import mkdirp from 'mkdirp';
 
 
+ const vulcan = require('vulcanize')
+ 
+global.Promise=Promise; // This is because of es6-promise polyfill used by vulcanize
 
 class PolyteorCompiler extends CachingCompiler {
     constructor() {
@@ -16,13 +19,14 @@ class PolyteorCompiler extends CachingCompiler {
             compilerName: 'polyteor-compiler'
             , defaultCacheSize: 1024 * 1024 * 10
          });
-
+         
     }
-    vulcanize(target, opt={}){
-        const Vulcanize = require('vulcanize');
+    vulcanize(target, opt={}){ 
+       
           return Async.runSync((done)=>{
-            Vulcanize.setOptions(opt);
-            Vulcanize.process(target, (err, html)=>done(err, html));
+            // const Vulcan = require('vulcanize');
+            vulcan.setOptions(opt);
+            vulcan.process(target, (err, html)=>done(err, html));
         })
     }
     getCacheKey(inputFile) {
@@ -52,8 +56,12 @@ class PolyteorCompiler extends CachingCompiler {
                console.log('Error', rcfile.error);
                return;
            }
-
-            return;
+           if(path.basename(inputFile.getPathInPackage())!== 'elements.pt.html'){
+               return;
+           }
+           console.log('Vulcanizing elements.pt.html ...')
+           return this.vulcanize('.polyteor/elements/elements.pt.html').result;
+           
         } else {
             // Just pass through the file, without any modifications, we do not need to modify it at all at the moment.
             return inputFile.getContentsAsString();

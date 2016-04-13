@@ -24,7 +24,8 @@ Package.describe({
 Package.onUse(function (api) {
     api.versionsFrom('1.2.1');
     api.use('ecmascript');
-  api.use('isobuild:compiler-plugin@1.0.0');
+    api.use('isobuild:compiler-plugin@1.0.0');
+    api.use('promise') ;
 });
 
 Package.registerBuildPlugin({
@@ -33,14 +34,13 @@ Package.registerBuildPlugin({
 
         'ecmascript',
          'caching-compiler@1.0.0',
-         "isobuild:compiler-plugin@1.0.0",
          "meteorhacks:async@1.0.0",
          
     ]
     , npmDependencies: {
          'mkdirp':'0.5.1',
          'fs-extra': '0.26.7',
-         'vulcanize': '1.14.8'
+         'vulcanize': '1.14.0'
     }
     , 
     sources: [
