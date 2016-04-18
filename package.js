@@ -26,6 +26,7 @@ Package.onUse(function (api) {
     api.use('ecmascript');
     api.use('isobuild:compiler-plugin@1.0.0');
     api.use('promise') ;
+    api.imply('modules');
 });
 
 Package.registerBuildPlugin({
@@ -33,6 +34,7 @@ Package.registerBuildPlugin({
     , use: [
 
         'ecmascript',
+        // 'babel-compiler',
          'caching-compiler@1.0.0',
          "meteorhacks:async@1.0.0",
 
@@ -40,11 +42,18 @@ Package.registerBuildPlugin({
     , npmDependencies: {
          'mkdirp':'0.5.1',
          'fs-extra': '0.26.7',
-         'vulcanize': '1.14.8'
+         'vulcanize': '1.14.8',
+         'crisper': '2.0.2',
+         'babel-core':  '6.7.5',
+         'babel-preset-es2015': '6.6.0'
     }
     ,
     sources: [
-        "polyteor-compiler.js"
+        "polyteor-compiler.js",
+        "utils.js",
+        "html-compiler.js",
+        "vulcanizer.js",
+
     ]
 });
 
