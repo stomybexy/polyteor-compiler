@@ -44,7 +44,7 @@ Package.registerBuildPlugin({
          'fs-extra': '0.26.7',
          'vulcanize': '1.14.8',
          'crisper': '2.0.2',
-         'babel-core':  '6.7.5',
+         'babel-core':  '6.7.4',
          'babel-preset-es2015': '6.6.0'
     }
     ,

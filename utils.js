@@ -1,9 +1,9 @@
 var path = Plugin.path;
-const vulcan = require('vulcanize');
 const crisper = require('crisper');
 const babel = require('babel-core');
-// import 'babel-preset-es2015';
+const es2015 = require('babel-preset-es2015');
 
+const vulcan = require('vulcanize');
 global.Promise = Promise; // This is because of es6-promise polyfill used by vulcanize
 
 
@@ -31,10 +31,13 @@ class CompilerUtils {
         console.log('babel ...');
         // var babelOptions = Babel.getDefaultOptions();
         // babelOptions.compact = false;
-        out.js = babel.transform(out.js, {compact: false}).code;
+        out.js = babel.transform(out.js, {
+            compact: false,
+            presets: [es2015]
+        }).code;
 
-        global.Promise = Promise; // This is because of es6-promise polyfill used by vulcanize
-        
+        // global.Promise = Promise; // This is because of es6-promise polyfill used by vulcanize
+
 
         // babelOptions.presets = ['es2015'];
         // out.js = Babel.compile(out.js, babelOptions).code;
