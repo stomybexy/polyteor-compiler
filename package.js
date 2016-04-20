@@ -53,7 +53,7 @@ Package.registerBuildPlugin({
         "utils.js",
         "html-compiler.js",
         "vulcanizer.js",
-
+        "js-compiler.js"
     ]
 });
 

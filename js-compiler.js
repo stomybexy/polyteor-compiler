@@ -7,10 +7,10 @@ import {
     Utils
 } from './utils';
 
-export class HtmlCompiler extends CachingCompiler {
+export class JsCompiler extends CachingCompiler {
     constructor() {
         super({
-            compilerName: 'polyteor-html-compiler',
+            compilerName: 'polyteor-js-compiler',
             defaultCacheSize: 1024 * 1024 * 10
         });
 
@@ -31,10 +31,13 @@ export class HtmlCompiler extends CachingCompiler {
             return;
 
         } else {
-            console.log('Compiling web component: ' + inputFile.getPathInPackage());
-            console.log('crisper ...');
-            let jsFileName = path.basename(inputFile.getPathInPackage(), '.pt.html') + '.js';
-            let out = Utils.crisper(inputFile.getContentsAsString(), jsFileName);
+            console.log('Compiling web component js: ' + inputFile.getPathInPackage());
+            let out = {
+                js: Utils.transpile(inputFile.getContentsAsString()),
+                jsFileName: path.basename(inputFile.getPathInPackage())
+            };
+
+
             // console.log('Compile result: ', out);
 
             // Just pass through the file, without any modifications, we do not need to modify it at all at the moment.

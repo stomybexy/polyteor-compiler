@@ -31,10 +31,11 @@ class CompilerUtils {
         console.log('babel ...');
         // var babelOptions = Babel.getDefaultOptions();
         // babelOptions.compact = false;
-        out.js = babel.transform(out.js, {
-            compact: false,
-            presets: [es2015]
-        }).code;
+        out.js = this.transpile(out.js);
+        // out.js = babel.transform(out.js, {
+        //     compact: false,
+        //     presets: [es2015]
+        // }).code;
 
         // global.Promise = Promise; // This is because of es6-promise polyfill used by vulcanize
 
@@ -43,16 +44,25 @@ class CompilerUtils {
         // out.js = Babel.compile(out.js, babelOptions).code;
         return out;
     }
+    transpile(js) {
+        return babel.transform(js, {
+            compact: false,
+            presets: [es2015]
+        }).code;
+    }
 
     addCompileResult(inputFile, compileResult) {
+
 
         let htmlPath = path.join(...inputFile.getPathInPackage().split(path.sep).slice(1)); // Relative to top level parent folder (client)
         let jsPath = path.join(path.dirname(htmlPath), compileResult.jsFileName || '');
 
-        inputFile.addAsset({
-            data: compileResult.html,
-            path: htmlPath // the path is the full path if the file comes from a package
-        });
+        if (compileResult.html) {
+            inputFile.addAsset({
+                data: compileResult.html,
+                path: htmlPath // the path is the full path if the file comes from a package
+            });
+        }
         if (compileResult.js && compileResult.jsFileName) {
             inputFile.addAsset({
                 data: compileResult.js,
