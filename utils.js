@@ -1,7 +1,7 @@
 var path = Plugin.path;
 const crisper = require('crisper');
 const babel = require('babel-core');
-const es2015 = require('babel-preset-es2015');
+const es2015 = require('babel-preset-es2015-script');
 
 const vulcan = require('vulcanize');
 global.Promise = Promise; // This is because of es6-promise polyfill used by vulcanize

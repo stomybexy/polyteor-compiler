@@ -45,7 +45,7 @@ Package.registerBuildPlugin({
          'vulcanize': '1.14.8',
          'crisper': '2.0.2',
          'babel-core':  '6.7.4',
-         'babel-preset-es2015': '6.6.0'
+         'babel-preset-es2015-script': '1.0.0'
     }
     ,
     sources: [
