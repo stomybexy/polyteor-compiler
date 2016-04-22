@@ -21,40 +21,39 @@ Package.describe({
 //     'vulcanize': '1.14.8'
 // })
 
-Package.onUse(function (api) {
-    api.versionsFrom('1.3.1');
-    api.use('ecmascript');
-    api.use('isobuild:compiler-plugin@1.0.0');
-    api.use('promise') ;
-    api.imply('modules');
+Package.onUse(function(api) {
+  api.versionsFrom('1.3.1');
+  api.use('ecmascript');
+  api.use('isobuild:compiler-plugin@1.0.0');
+  api.use('promise');
+  api.imply('modules');
 });
 
 Package.registerBuildPlugin({
-    name: "polyteor-compiler"
-    , use: [
+  name: "polyteor-compiler",
+  use: [
 
-        'ecmascript',
-        // 'babel-compiler',
-         'caching-compiler@1.0.0',
-         "meteorhacks:async@1.0.0",
+    'ecmascript',
+    // 'babel-compiler',
+    'caching-compiler@1.0.0',
+    "meteorhacks:async@1.0.0",
 
-    ]
-    , npmDependencies: {
-         'mkdirp':'0.5.1',
-         'fs-extra': '0.26.7',
-         'vulcanize': '1.14.8',
-         'crisper': '2.0.2',
-         'babel-core':  '6.7.4',
-         'babel-preset-es2015-script': '1.0.0'
-    }
-    ,
-    sources: [
-        "polyteor-compiler.js",
-        "utils.js",
-        "html-compiler.js",
-        "vulcanizer.js",
-        "js-compiler.js"
-    ]
+  ],
+  npmDependencies: {
+    'mkdirp': '0.5.1',
+    'fs-extra': '0.26.7',
+    'vulcanize': '1.14.8',
+    'crisper': '2.0.2',
+    'babel-core': '6.7.4',
+    'babel-preset-es2015-script': '1.0.0'
+  },
+  sources: [
+    "polyteor-compiler.js",
+    "utils.js",
+    "html-compiler.js",
+    "vulcanizer.js",
+    "js-compiler.js"
+  ]
 });
 
 Package.onTest(function(api) {
