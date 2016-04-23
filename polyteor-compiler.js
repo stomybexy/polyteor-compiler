@@ -12,6 +12,9 @@ import {
 import {
     Vulcanizer
 } from './vulcanizer';
+import {
+    CopyCompiler
+} from './copy-compiler';
 
 
 Plugin.registerCompiler({
@@ -25,3 +28,7 @@ Plugin.registerCompiler({
 Plugin.registerCompiler({
     extensions: ['vul.html'],
 }, () => new Vulcanizer());
+
+Plugin.registerCompiler({
+    extensions: ['pt.json'],
+}, () => new CopyCompiler());

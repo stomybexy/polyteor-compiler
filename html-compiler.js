@@ -27,17 +27,15 @@ export class HtmlCompiler extends CachingCompiler {
 
 
         if (process.env.VULCANIZE) {
-            console.log('skipping ' + inputFile.getPathInPackage());
+            Utils.log('skipping ' + inputFile.getPathInPackage());
             return;
 
         } else {
-            console.log('Compiling web component: ' + inputFile.getPathInPackage());
-            console.log('crisper ...');
+            Utils.log('Compiling web component: ' + inputFile.getPathInPackage());
+            Utils.log('crisper ...');
             let jsFileName = path.basename(inputFile.getPathInPackage(), '.pt.html') + '.js';
             let out = Utils.crisper(inputFile.getContentsAsString(), jsFileName);
-            // console.log('Compile result: ', out);
 
-            // Just pass through the file, without any modifications, we do not need to modify it at all at the moment.
             return out;
         }
 

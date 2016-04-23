@@ -1,6 +1,6 @@
 Package.describe({
   name: 'jonatan:polyteor-compiler',
-  version: '0.0.1',
+  version: '0.9.0',
   // Brief, one-line summary of the package.
   summary: 'Compiler for polymer inside meteor.',
   // URL to the Git repository containing the source code for this package.
@@ -45,14 +45,17 @@ Package.registerBuildPlugin({
     'vulcanize': '1.14.8',
     'crisper': '2.0.2',
     'babel-core': '6.7.4',
-    'babel-preset-es2015-script': '1.0.0'
+    'babel-preset-es2015-script': '1.0.0',
+    'html-minifier': '2.0.0',
+    'uglify-js': '2.6.2'
   },
   sources: [
     "polyteor-compiler.js",
     "utils.js",
     "html-compiler.js",
     "vulcanizer.js",
-    "js-compiler.js"
+    "js-compiler.js",
+    "copy-compiler.js"
   ]
 });
 

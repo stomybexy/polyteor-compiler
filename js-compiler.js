@@ -27,11 +27,11 @@ export class JsCompiler extends CachingCompiler {
 
 
         if (process.env.VULCANIZE) {
-            console.log('skipping ' + inputFile.getPathInPackage());
+            Utils.log('skipping ' + inputFile.getPathInPackage());
             return;
 
         } else {
-            console.log('Compiling web component js: ' + inputFile.getPathInPackage());
+            Utils.log('Compiling web component js: ' + inputFile.getPathInPackage());
             let out = {
                 js: Utils.transpile(inputFile.getContentsAsString()),
                 jsFileName: path.basename(inputFile.getPathInPackage())
