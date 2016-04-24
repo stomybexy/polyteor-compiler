@@ -24,5 +24,5 @@ A set of build plugins for polymer build inside meteor. It handles files with ex
 ```
 ```src``` is relative to ```.polyteor``` folder and ```dest``` to ```public``` folder. 
 In this example, ```.polyteor/bower_components/webcomponentsjs/webcomponents-lite.min.js``` will be copied to ```public/bower_components/webcomponentsjs/webcomponents-lite.min.js``` and the folder ```.polyteor/bower_components/platinum-sw/bootstrap``` to ```public/elements/bootstrap``` recursively.
-
+The files are minified after vulcanization.
 
