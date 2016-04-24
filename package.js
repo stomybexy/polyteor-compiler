@@ -23,10 +23,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.3.1');
-  api.use('ecmascript');
+  // api.use('ecmascript');
   api.use('isobuild:compiler-plugin@1.0.0');
-  api.use('promise');
-  api.imply('modules');
+  // api.use('promise');
 });
 
 Package.registerBuildPlugin({
@@ -34,8 +33,8 @@ Package.registerBuildPlugin({
   use: [
 
     'ecmascript',
-    // 'babel-compiler',
-    'caching-compiler@1.0.0',
+    'promise',
+    'caching-compiler',
     "meteorhacks:async@1.0.0",
 
   ],
