@@ -32,9 +32,9 @@ Package.registerBuildPlugin({
   name: "polyteor-compiler",
   use: [
 
-    'ecmascript',
-    'promise',
-    'caching-compiler',
+    'ecmascript@0.4..3',
+    'promise@0.6.7',
+    'caching-compiler@1.0.4',
     "meteorhacks:async@1.0.0",
 
   ],
